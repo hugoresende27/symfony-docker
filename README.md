@@ -118,3 +118,36 @@ Hello !!!
 
 
  9. Symfony generated a nice boilerplate for you, add data edit or delete
+
+
+ # TUTORIAL 4
+
+ - [Symfony Tutorials] : How to consume an API using symfony ?
+
+	1. For this example lets use TMDB (https://developer.themoviedb.org/docs/getting-started)
+
+		- get a key in the website above
+
+		- create TMDBService in src/Services
+
+	2. add this vars to .env :
+		TMDB_BASE_URL='https://api.themoviedb.org/3/'
+		TMDB_APIKEY='f072656e55b329abeece112d5ff71699'
+
+	3. add to config/services.yaml
+		api.tmdb_base_url : '%env(TMDB_BASE_URL)%'
+    	api.tmdb_apikey : '%env(TMDB_APIKEY)%'
+
+    4. check the parameters with command php bin/console debug:container --parameters
+
+    5. composer require guzzlehttp/guzzle (we will use guzzle to consume the TMDB api)
+
+    6. Create the functions construct, callApi and getMovies function in TMDBService
+
+    7. Make a controller  php bin/console make:controller Front\\MoviesController
+
+    8. Create function construct with TMDBService 
+
+    9. Edit function index for callMovies() from TMDBService and return to the view
+
+    10. 

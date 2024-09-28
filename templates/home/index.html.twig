@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Symfony Tutorials{% endblock %}
+{% block title %}HR : Symfony Tutorials{% endblock %}
 
 {% block body %}
 <style>
@@ -13,6 +13,13 @@
 
     <h1> {{ title }}! ✅</h1>
 
+    <hr>
+    <ul>
+        <li> <a href="{{ path('app_task_index') }}">Tasks</a></li>
+        <li> <a href="{{ path('app_front_movies') }}">Movies</a></li>
+    </ul>
+
+    <hr>
     Welcome to my tutorials
     <ul>
         <li>Tutorial One : <a href="https://www.youtube.com/watch?v=TMZSeEujRgM" target="_blank">https://www.youtube.com/watch?v=TMZSeEujRgM</a></li>
