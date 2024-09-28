@@ -150,4 +150,4 @@ Hello !!!
 
     9. Edit function index for callMovies() from TMDBService and return to the view
 
-    10. 
+    10. Edit front/movies index.html.twig with a for loop and show title and image of the movie, add some style
