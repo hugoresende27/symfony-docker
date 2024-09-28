@@ -8,4 +8,5 @@
 /var/
 /vendor/
 .env
+docker/
 ###< symfony/framework-bundle ###

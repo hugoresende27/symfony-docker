@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Symfony Tutorials{% endblock %}
 
 {% block body %}
 <style>
@@ -9,6 +9,8 @@
 </style>
 
 <div class="example-wrapper">
+
+
     <h1> {{ title }}! ✅</h1>
 
     This friendly message is coming from:
@@ -16,5 +18,11 @@
         <li>Your controller at <code>/app/src/Controller/HomeController.php</code></li>
         <li>Your template at <code>/app/templates/home/index.html.twig</code></li>
     </ul>
+
+    <hr>
+    <div class="center" style="display: flex; justify-content: center; align-items: center;">
+        <img src="{{ asset('assets/logo.png') }}" alt="logo">
+    </div>
+
 </div>
 {% endblock %}
