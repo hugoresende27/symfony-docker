@@ -19,7 +19,12 @@ class TMDBService
 
     public function getMovies()
     {
-        return $this->callApi('discover/movie');
+        return $this->callApi('3/discover/movie');
+    }
+
+    public function getMovieImage(string $imageId)
+    {
+        return $this->callApi('t/p/original/'.$imageId);
     }
 
 

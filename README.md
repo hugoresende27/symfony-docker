@@ -131,8 +131,8 @@ Hello !!!
 		- create TMDBService in src/Services
 
 	2. add this vars to .env :
-		TMDB_BASE_URL='https://api.themoviedb.org/3/'
-		TMDB_APIKEY='f072656e55b329abeece112d5ff71699'
+		TMDB_BASE_URL='https://api.themoviedb.org/'
+		TMDB_APIKEY='XXXXXXXXXX'
 
 	3. add to config/services.yaml
 		api.tmdb_base_url : '%env(TMDB_BASE_URL)%'
@@ -142,7 +142,7 @@ Hello !!!
 
     5. composer require guzzlehttp/guzzle (we will use guzzle to consume the TMDB api)
 
-    6. Create the functions construct, callApi and getMovies function in TMDBService
+    6. Create the functions construct, callApi and getMovies (3/discover/movie) function in TMDBService
 
     7. Make a controller  php bin/console make:controller Front\\MoviesController
 
