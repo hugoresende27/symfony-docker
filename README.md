@@ -152,4 +152,8 @@ Hello !!!
 
     10. Edit front/movies index.html.twig with a for loop and show title and image of the movie, add some style
 
+# TUTORIAL 5
 
+ - [Symfony Tutorials] : How to Implement Authentication and Authorization with Symfony ?
+
+    1. composer require symfony/security-bundle
