@@ -157,3 +157,5 @@ Hello !!!
  - [Symfony Tutorials] : How to Implement Authentication and Authorization with Symfony ?
 
     1. composer require symfony/security-bundle
+
+    2. create header.html.twig
