@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}HR : Symfony Tutorials{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,29 @@
 </style>
 
 <div class="example-wrapper">
+
+
     <h1> {{ title }}! ✅</h1>
 
-    This friendly message is coming from:
+    <hr>
     <ul>
-        <li>Your controller at <code>/app/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/app/templates/home/index.html.twig</code></li>
+        <li> <a href="{{ path('app_task_index') }}">Tasks</a></li>
+        <li> <a href="{{ path('app_front_movies') }}">Movies</a></li>
     </ul>
+
+    <hr>
+    Welcome to my tutorials
+    <ul>
+        <li>Tutorial One : <a href="https://www.youtube.com/watch?v=TMZSeEujRgM" target="_blank">https://www.youtube.com/watch?v=TMZSeEujRgM</a></li>
+        <li>Tutorial Two : <a href="https://www.youtube.com/watch?v=j6T32WGyz_o" target="_blank">https://www.youtube.com/watch?v=j6T32WGyz_o</a></li>
+        <li>Tutorial Three : <a href="https://www.youtube.com/watch?v=N0MXry_rAR4" target="_blank">https://www.youtube.com/watch?v=N0MXry_rAR4</a></li>
+
+    </ul>
+
+    <hr>
+    <div class="center" style="display: flex; justify-content: center; align-items: center;">
+        <img src="{{ asset('assets/logo.png') }}" alt="logo">
+    </div>
+
 </div>
 {% endblock %}

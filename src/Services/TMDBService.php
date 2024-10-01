@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Services;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
@@ -19,7 +18,7 @@ class TMDBService
     }
 
 
-    
+
     public function getMovies()
     {
         return $this->callApi('3/discover/movie');

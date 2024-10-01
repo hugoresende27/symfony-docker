@@ -19,7 +19,6 @@ class MoviesController extends AbstractController
     public function index(): Response
     {
         $movies = $this->tMDBService->getMovies();
-
         return $this->render('front/movies/index.html.twig', [
             'movies' => $movies['results'] ?? [],
         ]);
