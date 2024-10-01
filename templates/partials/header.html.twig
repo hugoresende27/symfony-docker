@@ -1,13 +1,32 @@
 {# templates/partials/header.html.twig #}
 <header>
     <nav>
+
+
         <ul>
-            <li><a href=
-                        {# "{{ path('login') }}" #}
-                        >Login</a></li>
-            <li><a href=
-                        {# "{{ path('register') }}" #}
-                        >Register</a></li>
+
+            {% if app.user %}
+                <p style="color:white">Welcome back, {{ app.user.username }}!</p> &nbsp;&nbsp;&nbsp;&nbsp;
+                 <a href="{{ path('app_logout') }}">Logout</a>
+            {% else %}
+                <p style="color:white">Please log in to access your account.</p> &nbsp;&nbsp;&nbsp;&nbsp;
+                <li>
+
+                <a href=
+                            "{{ path('login') }}"
+                            >Login</a>
+                </li>
+
+                <li>
+
+                <a href=
+                            "{{ path('register') }}"
+                            >Register</a>
+                </li>
+
+            {% endif %}
         </ul>
+
+
     </nav>
 </header>
