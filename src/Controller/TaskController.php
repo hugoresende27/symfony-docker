@@ -10,13 +10,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/task')]
+#[IsGranted('IS_AUTHENTICATED_FULLY')] // This ensures all methods require full authentication
 final class TaskController extends AbstractController
 {
     #[Route(name: 'app_task_index', methods: ['GET'])]
     public function index(TaskRepository $taskRepository): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         return $this->render('task/index.html.twig', [
             'tasks' => $taskRepository->findAll(),
         ]);

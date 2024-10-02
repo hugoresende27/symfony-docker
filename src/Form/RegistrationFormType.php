@@ -22,11 +22,11 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'label'    => 'You should agree to our terms.',
                 'required' => false,
-                // 'constraints' => [
-                //     new IsTrue([
-                //         'message' => 'You should agree to our terms.',
-                //     ]),
-                // ],
+                 'constraints' => [
+                     new IsTrue([
+                         'message' => 'You should agree to our terms.',
+                     ]),
+                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
@@ -34,17 +34,17 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'hash_property_path' => 'password',
-                // 'constraints' => [
-                //     new NotBlank([
-                //         'message' => 'Please enter a password',
-                //     ]),
-                //     new Length([
-                //         'min' => 6,
-                //         'minMessage' => 'Your password should be at least {{ limit }} characters',
-                //         // max length allowed by Symfony for security reasons
-                //         'max' => 4096,
-                //     ]),
-                // ],
+                 'constraints' => [
+                     new NotBlank([
+                         'message' => 'Please enter a password',
+                     ]),
+                     new Length([
+                         'min' => 4,
+                         'minMessage' => 'Your password should be at least {{ limit }} characters',
+                         // max length allowed by Symfony for security reasons
+                         'max' => 4096,
+                     ]),
+                 ],
             ])
         ;
     }

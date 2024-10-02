@@ -156,6 +156,34 @@ Hello !!!
 
  - [Symfony Tutorials] : How to Implement Authentication and Authorization with Symfony ?
 
-    1. composer require symfony/security-bundle
+    1. composer require maker orm validator security twig , this will add :
 
-    2. create header.html.twig
+      - orm: This bundle allows us to use an ORM (Symfony defaults to Doctrine).
+      validator: This bundle is used for input validation.
+      - maker: This package (referred to as a bundle in Symfony) is used for code generation.
+      - security: This bundle is responsible for all security aspects of our application and will be used for the authentication process.
+      - Twig: Twig is the default templating engine for Symfony.
+      php bin/console make:user && php bin/console make:migration && php bin/console doctrine:migration:migrate
+
+    2. composer require symfony/security-bundle
+
+    3. composer require validation //OR DOWN ?
+
+    4. php bin/console make:user (username as UNIQUE)
+
+    5. bin/console make:security:form-login (https://symfony.com/doc/current/security.html#form-login php)
+
+    6. php bin/console make:registration for registration form and routes (no no yes no)
+
+    7. php bin/console make:migration && php bin/console doctrine:migrations:migrate
+
+    8. create partials/header.html.twig and add it to base.html.twig
+
+    9. Edit base html with {% if is_granted('IS_AUTHENTICATED_FULLY') %}, add style.css 
+
+    10. Edit Task and Movie Controller #[IsGranted('IS_AUTHENTICATED_FULLY')] 
+
+    11. Browse in localhost, try to register will see an error(or not if installed) in CheckboxType in RegistrationFormType
+      - to fix : composer require validation
+
+    12. Register and login, test routes with logout 

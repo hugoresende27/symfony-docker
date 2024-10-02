@@ -6,7 +6,10 @@ use App\Services\TMDBService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+
+#[IsGranted('IS_AUTHENTICATED_FULLY')] // This ensures all methods require full authentication
 class MoviesController extends AbstractController
 {
 
