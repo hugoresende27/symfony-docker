@@ -246,5 +246,17 @@ Hello !!!
     
 
     
+# TUTORIAL 6 
+
+ - [Symfony Tutorials] : How to create a restAPI using symfony ?
+
+
+---- to run project : docker compose up --pull always -d --wait
+
+- REST API (Representational State Transfer API) 
+
+    1. php bin/console make:entity Product (name (string) description (text) price (float) createdAt (datetime))
+    2. php bin/console make:migration && php bin/console doctrine:migrations:migrate
+    3. php bin/console make:controller ProductController
 
 
