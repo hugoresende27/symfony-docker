@@ -1,36 +1,38 @@
 <header>
 
     <nav>
-        <li>
-            <a href="{{ path('app_home')}}">Home</a>
 
-            {% if app.user %}
+        <ul>
+            <li>
+                <a href="{{ path('app_home')}}">Home</a>
 
-                <p style="color:white">Welcome back, {{ app.user.username }}!</p> &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{ path('app_logout') }}">Logout</a>
+                {% if app.user %}
 
-            {% else %}
+                    <p style="color:white">Welcome back, {{ app.user.username }}!</p> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ path('app_logout') }}">Logout</a>
 
-                <p style="color:white">Please log in to access your account.</p> &nbsp;&nbsp;&nbsp;&nbsp;
-                <li>
+                {% else %}
 
-                <a href=
-                            "{{ path('login') }}"
-                            >Login</a>
-                </li>
+                    <p style="color:white">Please log in to access your account.</p> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <li>
 
-                <li>
+                    <a href=
+                                "{{ path('login') }}"
+                                >Login</a>
+                    </li>
 
-                <a href=
-                            "{{ path('register') }}"
-                            >Register</a>
-                </li>
+                    <li>
 
-            {% endif %}
+                    <a href=
+                                "{{ path('register') }}"
+                                >Register</a>
+                    </li>
 
-        </li>
+                {% endif %}
 
+            </li>
 
+        </ul>
 
 
     </nav>

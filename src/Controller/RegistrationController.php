@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -28,12 +29,21 @@ class RegistrationController extends AbstractController
             // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
 
-            $entityManager->persist($user);
-            $entityManager->flush();
 
-            // do anything else you need here, like send an email
+            try {
 
-            return $security->login($user, 'form_login', 'main');
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                // do anything else you need here, like send an email
+
+                return $security->login($user, 'form_login', 'main');
+
+            } catch (UniqueConstraintViolationException $e) {
+
+                $this->addFlash('error','Username already exists!!!');
+            }
+
         }
 
         return $this->render('registration/register.html.twig', [

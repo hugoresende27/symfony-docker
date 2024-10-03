@@ -15,10 +15,14 @@
     <h2><a href="https://github.com/hugoresende27/symfony-docker" target="_blank">Full Github Repo</a></h2>
 
     <hr>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     <ul>
         <li> <a href="{{ path('app_task_index') }}">Tasks</a></li>
         <li> <a href="{{ path('app_front_movies') }}">Movies</a></li>
     </ul>
+
+    {% endif %}
 
     <hr>
     Welcome to my tutorials
