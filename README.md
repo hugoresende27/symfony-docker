@@ -156,3 +156,95 @@ Hello !!!
     
 
 
+# TUTORIAL 5
+
+ - [Symfony Tutorials] : How to Implement Authentication and Authorization with Symfony ?
+
+
+---- to run project : docker compose up --pull always -d --wait
+
+
+    1. composer require maker orm validator security twig , this will add :
+
+      - orm: This bundle allows us to use an ORM (Symfony defaults to Doctrine)
+      - validator: This bundle is used for input validation.
+      - maker: This package (referred to as a bundle in Symfony) is used for code generation.
+      - security: all security aspects of our application and will be used for the authentication process.
+      - twig: Twig is the default templating engine for Symfony.
+
+    2. composer require symfony/security-bundle
+
+    4. php bin/console make:user (username as UNIQUE)
+
+    5. bin/console make:security:form-login (https://symfony.com/doc/current/security.html#form-login php)
+
+    6. php bin/console make:registration for registration form and routes (no no yes no)
+
+    7. php bin/console make:migration && php bin/console doctrine:migrations:migrate
+
+    8. create partials/header.html.twig and add it to base.html.twig and add css/style.css in public
+
+                /* public/css/styles.css */
+                header {
+                    background-color: #333;
+                    padding: 1rem;
+                }
+
+                nav ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                nav ul li {
+                    display: inline;
+                    margin-right: 10px;
+                }
+
+                nav ul li a {
+                    color: white;
+                    text-decoration: none;
+                }
+
+    9. Edit base html with {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+    10. Lets add some style to register template, get the code at github repo https://github.com/hugoresende27/symfony-docker/blob/tutorial-5/templates/registration/register.html.twig
+
+    11. Browse in localhost, try to register and login
+
+    12. Lets handle duplicate username with a try catch :
+             try {
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                // Log the user in after registration
+                return $security->login($user, 'form_login', 'main');
+            } catch (UniqueConstraintViolationException $e) {
+                // Handle the duplicate username error
+                $this->addFlash('error', 'Username already exists. Please choose a different one.');
+            }
+
+        - add this to template register : 
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+
+
+    13. Register and login, test routes with logout 
+
+    14. Edit Task and Movie Controller #[IsGranted('IS_AUTHENTICATED_FULLY')] 
+
+    Thank you for watching !!!!
+
+    By Hugo Resende.....
+
+    visit github/hugoresende27 to get source code !
+
+
+    
+
+    
+
+
