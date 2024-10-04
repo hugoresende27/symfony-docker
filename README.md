@@ -340,3 +340,6 @@ By Hugo Resende !!!!!!
 # TUTORIAL 7
 
  - [Symfony Tutorials] : How to use JWT token in API ?
+
+    1. follow docs https://symfony.com/doc/current/security/access_token.html
+     - 
