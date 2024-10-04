@@ -314,7 +314,7 @@ By Hugo Resende !!!!!!
 		    public function index(ProductRepository $productRepository): JsonResponse
 		    {
 		        $products = $productRepository->findAll();
-		        return $this->json($products);
+		        return $this- json($products);
 		    }
 
 
@@ -331,9 +331,12 @@ By Hugo Resende !!!!!!
 		        $product->setName($updatedProduct->getName());
 		        $product->setPrice($updatedProduct->getPrice());
 
-		        $entityManager->flush();
+		        $entityManager- flush();
 
 		        return new Response('Product updated!', 200);
 		    }
 
 
+# TUTORIAL 7
+
+ - [Symfony Tutorials] : How to use JWT token in API ?
