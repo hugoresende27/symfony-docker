@@ -3,3 +3,8 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+# product_api_update:
+#    path: /api/products/{id}
+#    controller: 'App\Controller\ApiResource\ProductAPIController::update'
+#    methods: ['PUT']

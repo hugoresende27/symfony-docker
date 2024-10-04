@@ -246,7 +246,7 @@ Hello !!!
     
 
     
-# TUTORIAL 6 
+	# TUTORIAL 6 
 
  - [Symfony Tutorials] : How to create a restAPI using symfony ?
 
@@ -255,8 +255,39 @@ Hello !!!
 
 - REST API (Representational State Transfer API) 
 
-    1. php bin/console make:entity Product (name (string) description (text) price (float) createdAt (datetime))
-    2. php bin/console make:migration && php bin/console doctrine:migrations:migrate
-    3. php bin/console make:controller ProductController
+    1. composer require api
+
+    2. php bin/console make:entity Product --api-resource  
+    	-(name (string) description (text) price (float) createdAt (datetime_imm null) 
+
+    3. php bin/console make:migration && php bin/console doctrine:migrations:migrate
+
+    4. php bin/console debug:router
+
+    5. On POSTMAN create new product, check products (header with application/ld+json)
+
+    6. Change in config/routes/api_plataform.yaml 
+    	- prefix : /api/v1
+
+    7. Change in config/packages/api_plataform.yaml 
+    	formats:
+	        jsonld: ['application/ld+json']
+	        json: ['application/json']  # Add support for JSON
+
+	10. Remove header from POSTMAN, test again create a product and check on browser too
+
+	11. On postman, edit a product using patch request with header :  Content-Type : application/merge-patch+json
+
+	12. Check diffs between https://localhost/api/v1/products.json and https://localhost/api/v1/products.jsonld
+
+	13. Check https://localhost/api/v1 for API auto generated documentation
+
+	14. Add this to model to handle errors on missing fields : 
+			(use Symfony\Component\Validator\Constraints as Assert;)
+		    #[Assert\NotNull(message: "Price cannot be null.")]
+    		#[Assert\Positive(message: "Price must be a positive number.")]
+
+    15. That's it, your simple restAPI is working
+
 
 

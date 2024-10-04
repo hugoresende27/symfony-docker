@@ -13,14 +13,14 @@ class TMDBAPIController extends AbstractController
 
     private TMDBService $tMDBService;
 
-    
+
     public function __construct(TMDBService $tMDBService)
     {
         $this->tMDBService = $tMDBService;
     }
 
 
-    #[Route('api/v1/tmdb', name: 'api_tmdb_index')]
+    #[Route(path: 'api/v1/tmdb', name: 'api_tmdb_index')]
     public function index(): JsonResponse
     {
         $apiRequest = $this->tMDBService->getMovies();
