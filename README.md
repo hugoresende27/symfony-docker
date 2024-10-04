@@ -251,12 +251,89 @@ Hello !!!
  - [Symfony Tutorials] : How to create a restAPI using symfony ?
 
 
----- to run project : docker compose up --pull always -d --wait
+---- to run project : docker compose up --pull always -d --wait OR use vscode extension Docker
 
 - REST API (Representational State Transfer API) 
 
-    1. php bin/console make:entity Product (name (string) description (text) price (float) createdAt (datetime))
-    2. php bin/console make:migration && php bin/console doctrine:migrations:migrate
-    3. php bin/console make:controller ProductController
+    1. composer require api
+
+    2. php bin/console make:entity Product --api-resource  
+    	-(name (string) description (text) price (float) createdAt (datetime_imm null) 
+
+    3. php bin/console make:migration && php bin/console doctrine:migrations:migrate
+
+    4. php bin/console debug:router
+
+    5. Change in config/routes/api_plataform.yaml 
+    	- prefix : /api/v1
+
+    6. Change in config/packages/api_plataform.yaml 
+    	formats:
+	        jsonld: ['application/ld+json']
+	        json: ['application/json']  # Add support for JSON
+
+
+
+    7. On POSTMAN create new product, check products (header with application/ld+json or application/ld+json)
+
+	8. Test again create a product and check on browser too
+
+	9. On postman, edit a product using patch request with header :  Content-Type : application/merge-patch+json
+
+	10. Check diffs between https://localhost/api/v1/products.json and https://localhost/api/v1/products.jsonld
+
+	11. Check https://localhost/api/v1 for API auto generated documentation
+
+	12. Add this to model to handle errors on missing fields : 
+			(use Symfony\Component\Validator\Constraints as Assert;)
+		    #[Assert\NotNull(message: "Price cannot be null.")]
+    		#[Assert\Positive(message: "Price must be a positive number.")]
+
+    13. That's it, your simple restAPI is working
+
+
+Thank you for watching....
+
+check my source code at my github repo, hugoresende27.....
+
+By Hugo Resende !!!!!!
+
+
+
+## Side alternative steps
+
+	
+	1. First let's make entity Product
+
+      - php bin/console make:entity Product 
+      - php bin/console make:migration && php bin/console doctrine:migrations:migrate
+      - php bin/console make:controller API\\ProductAPIController
+
+    2. Change API controller index function :
+    	    #[Route('api/v1/product', name: 'api_product')]
+		    public function index(ProductRepository $productRepository): JsonResponse
+		    {
+		        $products = $productRepository->findAll();
+		        return $this->json($products);
+		    }
+
+
+
+	8. Make a ProductAPIController, delete the generated template (we don't need it atm) and index function on controller
+
+	9. Create update function :
+		-    #[Route('/api/products/{id}', name: 'api_product_update')]
+		    public function update(Product $product, Request $request, EntityManagerInterface $entityManager, SerializerInterface $serializer): Response
+		    {
+		        $requestData = $request->getContent();
+		        $updatedProduct = $serializer->deserialize($requestData, Product::class, 'json');
+
+		        $product->setName($updatedProduct->getName());
+		        $product->setPrice($updatedProduct->getPrice());
+
+		        $entityManager->flush();
+
+		        return new Response('Product updated!', 200);
+		    }
 
 
