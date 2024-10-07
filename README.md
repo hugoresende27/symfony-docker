@@ -342,4 +342,4 @@ By Hugo Resende !!!!!!
  - [Symfony Tutorials] : How to use JWT token in API ?
 
     1. Lets us LexikJWTAuthenticationBundle docs in (https://symfony.com/bundles/LexikJWTAuthenticationBundle/current/index.html#prerequisites)
-    - php bin/console lexik:jwt:generate-keypair --overwrite
+    - php bin/console lexik:jwt:generate-keypair --overwrite (if need to overwrite)
