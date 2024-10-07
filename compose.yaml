@@ -42,9 +42,11 @@ services:
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-app}
       # You should definitely change the password in production
-      MYSQL_RANDOM_ROOT_PASSWORD: "true"
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-!ChangeMe!}
+      MYSQL_RANDOM_ROOT_PASSWORD: "false"
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-app}
       MYSQL_USER: ${MYSQL_USER:-app}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 5s

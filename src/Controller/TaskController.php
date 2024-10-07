@@ -15,6 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
 #[Route('/task')]
+
 final class TaskController extends AbstractController
 {
     #[Route(name: 'app_task_index', methods: ['GET'])]
